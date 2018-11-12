@@ -6,6 +6,7 @@
 		h1{
 			font-size: 12pt;
 			border-bottom: 1px solid gray;
+			color : blue;
 		}
 		form{
 			border: 1px solid gray;
