@@ -5,6 +5,7 @@
 ?><!DOCTYPE html>
 <html>
 <head>
+	<meta http-equiv="refresh" content="20">
 	<title>チャット</title>
 	<style>
 		h1{
@@ -45,22 +46,22 @@ window.onload = function(){
       var uname = document.querySelector("#uname").value;
       var msg   = document.querySelector("#msg").value;
       var request = new XMLHttpRequest();
-      request.open('POST', 'http://127.0.0.1/chat2/set.php', false);
-      request.onreadystatechange = function(){
+        request.open('POST', 'http://127.0.0.1/chat2/set.php', false);
+        request.onreadystatechange = function(){
 		   if (request.status === 200 || request.status === 304 ) {
-			  	var response = request.responseText;
-			  	var json     = JSON.parse(response);
+			  var response = request.responseText;
+			  var json     = JSON.parse(response);
 			
-				if( json["head"]["status"] === false ){
-					alert("失敗しました");
-					return(false);	
-				}
-		     	getLog();
+		  	  if( json["head"]["status"] === false ){
+				alert("失敗しました");
+				return(false);	
+			  }
+		     getLog();
 		   }
 		  else if(request.status >= 500){
 			 alert("ServerError");
 		  }
-	  };
+	    };
        request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
        request.send(
     	    "uname=" + encodeURIComponent(uname) + "&"
